@@ -32,8 +32,11 @@ app.use(express.json())
 /* app.use(express.urlencoded({ extended: false })) */
 app.use(bodyParser.urlencoded({ extended: false }))
 
+app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'uploads')));
 
 app.use(require('./controllers/auth'))
 app.use(require('./controllers/bandeja'))
+app.use(require('./controllers/index'))
 
 module.exports = app;

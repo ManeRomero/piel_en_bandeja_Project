@@ -1,0 +1,112 @@
+$colorOscuro: #998650 ;
+$colorVivo: #E0BE36;
+$colorAzul: #75B09C;
+$colorClaro: #A0CA92;
+$colorVerde: #D8F793;
+
+html {
+    background-color: black;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Lato', sans-serif;
+}
+
+body {
+    width: 95vw;
+    margin: auto;
+    background-color: black !important;
+}
+
+header {
+    display: flex !important;
+    justify-content: space-around;
+    margin: auto;
+    background-color: $colorOscuro;
+    align-items: center;
+    text-align: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+
+    div {
+        width: 30%;
+        margin: auto
+    }
+
+    h1 {
+        letter-spacing: 5px;
+        padding: 20px;
+        color: $colorVivo;
+        font-size: 3em;
+    }
+
+    p {
+        border-bottom: 3px solid $colorVivo;
+        padding: 5px;
+        letter-spacing: 5px;
+        color: $colorVivo;
+    }
+
+    a {
+        text-decoration: none;
+        background-color: $colorVivo;
+        padding: 15px;
+        border: 3px solid grey;
+        color: $colorOscuro
+    }
+}
+
+.containerBandejas {
+    margin: 20px auto;
+    display: flex;
+    justify-content: space-around;
+    flex-flow: row wrap;
+    align-content: center;
+    background-color: $colorOscuro;
+
+    span {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        padding: 7px;
+        font-size: 3em;
+        font-weight: 900;
+        background-color: white;
+        color: gold;
+        border: 1px solid grey;
+        border-radius: 5px;
+        transform: rotateZ(-10deg);
+        z-index: 500
+    }
+
+    div:hover {
+        cursor: pointer;
+        background-color: $colorAzul
+    }
+
+    div:hover span {
+        transform: rotateZ(0deg);
+        color: $colorOscuro;
+        background-color: $colorVivo;
+        transform: scale(1.2);
+        transition: .4s ease-in-out;
+    }
+
+    a, a:hover {
+        text-decoration: none;
+        color: rgba(0, 0, 0, 0.74);
+    }
+
+
+/*     div {
+        margin: auto;
+        padding: 1.5%;
+        border: 1px solid grey;
+        border-radius: 5px;
+        background-color: white;
+        align-self: stretch;
+    } */
+}

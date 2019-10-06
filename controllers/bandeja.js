@@ -9,12 +9,14 @@ router.post('/create', async (req, res, next) => {
         band_name,
         band_descr,
         band_price,
+        band_foto
     } = req.body
 
     const newBandeja = new Bandeja({
         band_name,
         band_descr,
         band_price,
+        band_foto
     })
 
     await newBandeja.save()
