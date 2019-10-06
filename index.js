@@ -1,5 +1,5 @@
 const app = require('./app')
-require('./database')
+require('./db')
 
 async function init() {
     await app.listen(3000)
