@@ -4,15 +4,7 @@ const bcrypt = require('bcryptjs')
 const UserSchema = new Schema({
     user_name: String,
     user_email: String,
-    user_pass: String,
-    user_age: Number,
-    user_hash: String,
-    user_active: {
-        type: Boolean,
-        default: false
-    }
-
-
+    user_pass: String
 })
 
 UserSchema.methods.codePass = async (pass) => {

@@ -12,26 +12,27 @@ router.get('/', validate, async (req, res, next) => {
     if (!user) {
         return res.status(404).send('ERROR EN DATOS')
     }
-    res.json(user)
+
+    const title = 'Piel en Bandeja'
+
+    res.render('index', {
+        title
+    })
 })
 
-router.post('signup', async (req, res, next) => {
+router.post('/signup', async (req, res, next) => {
+    console.log('AQUÍ ESTÁ ENTRANDO!!', req.body)
+
     const {
         user_name,
         user_email,
         user_pass,
-        user_age,
-        user_hash,
-        user_active
     } = req.body
 
     const newUser = new User({
         user_name,
         user_email,
         user_pass,
-        user_age,
-        user_hash,
-        user_active
     })
 
     newUser.user_pass = await newUser.codePass(newUser.user_pass)
@@ -43,10 +44,12 @@ router.post('signup', async (req, res, next) => {
 
     newUser.user_hash = token
     await newUser.save()
-    console.log(newUser.user_pass)
+    console.log('ESTA ES LA CONTRASEÑA CODIFICADA!', newUser.user_pass)
+
+    res.json({status: "USUARIO GUARDADO!!!"})
 })
 
-router.post('signin', (req, res, next) => {
+router.post('signin', async (req, res, next) => {
     const { user_email, user_pass } = req.body
     const isUser = await User.findOne({ user_email })
 
@@ -64,7 +67,8 @@ router.post('signin', (req, res, next) => {
     const token = jsonwt.sign({ id: isUser._id }, config.secret, {
         expiresIn: 60 * 60 * 24
     })
-    res.json(isUser, token)
+    /* res.json(isUser, token) */
+    res.redirect('/')
 })
 
 module.exports = router
