@@ -1,11 +1,11 @@
-$colorOscuro: #998650 ;
+$colorOscuro: #ca7835    ;
 $colorVivo: #E0BE36;
-$colorAzul: #75B09C;
+$colorNaranja: rgba(119, 95, 17, 0.11);
 $colorClaro: #A0CA92;
 $colorVerde: #D8F793;
 
 html {
-    background-color: black;
+    background-color: rgb(124, 112, 112);
 }
 
 * {
@@ -17,7 +17,12 @@ html {
 body {
     width: 95vw;
     margin: auto;
-    background-color: black !important;
+    background-color:white !important;
+}
+
+a, a:hover .reg:hover {
+    text-decoration: none !important;
+    color: inherit !important
 }
 
 header {
@@ -50,8 +55,7 @@ header {
         color: $colorVivo;
     }
 
-    a {
-        text-decoration: none;
+    .reg {
         background-color: $colorVivo;
         padding: 15px;
         border: 3px solid grey;
@@ -62,35 +66,19 @@ header {
 .containerBandejas {
     margin: 20px auto;
     display: flex;
-    justify-content: space-around;
+    justify-content: flex-start;
     flex-flow: row wrap;
     align-content: center;
-    background-color: $colorOscuro;
-
-    span {
-        position: absolute;
-        top: 10px;
-        right: 10px;
-        padding: 7px;
-        font-size: 3em;
-        font-weight: 900;
-        background-color: white;
-        color: gold;
-        border: 1px solid grey;
-        border-radius: 5px;
-        transform: rotateZ(-10deg);
-        z-index: 500
-    }
+    text-align: center;    
 
     div:hover {
         cursor: pointer;
-        background-color: $colorAzul
+        background-color: $colorNaranja
     }
 
-    div:hover span {
+    div:hover .price {
         transform: rotateZ(0deg);
         color: $colorOscuro;
-        background-color: $colorVivo;
         transform: scale(1.2);
         transition: .4s ease-in-out;
     }
@@ -109,4 +97,139 @@ header {
         background-color: white;
         align-self: stretch;
     } */
+}
+
+.detail {
+    display: flex;
+    flex-flow: row wrap;
+    background-color: white;
+
+    div {
+        width: 50%;
+        margin: auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    h1, p, span, small, h3 {
+        padding: 5vh;
+        text-align: center
+    }
+    
+    img {
+        margin: auto;
+        width: 30vw;
+        height: auto;              
+    }
+
+    small {
+        padding: 1vh;
+        border: 1px solid grey;
+        border-radius: 10px;
+        margin:auto;
+        position: relative;
+        bottom: 5vh
+    }
+
+    .panel {
+        display: flex;
+        flex-flow: row nowrap;
+        width: 80%;
+        margin: auto;
+        overflow: hidden;
+        overflow-x: auto;
+        max-height: 200px;
+        position: relative;
+
+        div {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            
+            img {
+                width: 60%;
+                margin: auto;
+                height: auto;
+            }
+
+            small {
+                background-color: gold;
+                color: black
+            }
+        }
+    }
+}
+
+.price {
+    position: absolute;
+    top: 50px;
+    right: 10px;
+    padding: 7px;
+    font-size: 2em;
+    font-weight: 900;
+    background-color: white;
+    color: gold;
+    border: 1px solid grey;
+    border-radius: 5px;
+    transform: rotateZ(-10deg);
+    z-index: 500
+}
+
+.priceDetail {
+    top: 200px;
+    right: 200px;
+    font-size: 2vw;
+    font-weight: 900;
+    background-color: $colorOscuro;
+    color: black;
+    border-radius: 5px;
+    z-index: 500;
+    max-width: 30%;
+    margin: auto;
+    max-height: 40px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    margin: auto
+}
+
+.priceList {
+    position: absolute;
+    top: 40px
+}
+
+/* BARRA DE SCROLL */
+::-webkit-scrollbar {
+  width: 14px;
+  height: 14px;
+}
+::-webkit-scrollbar-button {
+  width: 0px;
+  height: 0px;
+}
+::-webkit-scrollbar-thumb {
+  background: #f7dacc;
+  border: 42px none #ffffff;
+  border-radius: 50px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #ffffff;
+}
+::-webkit-scrollbar-thumb:active {
+  background: #e4b550;
+}
+::-webkit-scrollbar-track {
+  background: #9b6631;
+  border: 0px solid #ffffff;
+  border-radius: 37px;
+}
+::-webkit-scrollbar-track:hover {
+  background: #9b6631;
+}
+::-webkit-scrollbar-track:active {
+  background: #17580e;
+}
+::-webkit-scrollbar-corner {
+  background: transparent;
 }

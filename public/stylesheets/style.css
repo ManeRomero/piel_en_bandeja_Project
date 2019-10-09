@@ -1,5 +1,5 @@
 html {
-  background-color: black;
+  background-color: #7c7070;
 }
 
 * {
@@ -11,14 +11,19 @@ html {
 body {
   width: 95vw;
   margin: auto;
-  background-color: black !important;
+  background-color: white !important;
+}
+
+a, a:hover .reg:hover {
+  text-decoration: none !important;
+  color: inherit !important;
 }
 
 header {
   display: flex !important;
   justify-content: space-around;
   margin: auto;
-  background-color: #998650;
+  background-color: #ca7835;
   align-items: center;
   text-align: center;
   position: sticky;
@@ -41,21 +46,20 @@ header p {
   letter-spacing: 5px;
   color: #E0BE36;
 }
-header a {
-  text-decoration: none;
+header .reg {
   background-color: #E0BE36;
   padding: 15px;
   border: 3px solid grey;
-  color: #998650;
+  color: #ca7835;
 }
 
 .containerBandejas {
   margin: 20px auto;
   display: flex;
-  justify-content: space-around;
+  justify-content: flex-start;
   flex-flow: row wrap;
   align-content: center;
-  background-color: #998650;
+  text-align: center;
   /*     div {
           margin: auto;
           padding: 1.5%;
@@ -65,12 +69,81 @@ header a {
           align-self: stretch;
       } */
 }
-.containerBandejas span {
+.containerBandejas div:hover {
+  cursor: pointer;
+  background-color: rgba(119, 95, 17, 0.11);
+}
+.containerBandejas div:hover .price {
+  transform: rotateZ(0deg);
+  color: #ca7835;
+  transform: scale(1.2);
+  transition: 0.4s ease-in-out;
+}
+.containerBandejas a, .containerBandejas a:hover {
+  text-decoration: none;
+  color: rgba(0, 0, 0, 0.74);
+}
+
+.detail {
+  display: flex;
+  flex-flow: row wrap;
+  background-color: white;
+}
+.detail div {
+  width: 50%;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.detail h1, .detail p, .detail span, .detail small, .detail h3 {
+  padding: 5vh;
+  text-align: center;
+}
+.detail img {
+  margin: auto;
+  width: 30vw;
+  height: auto;
+}
+.detail small {
+  padding: 1vh;
+  border: 1px solid grey;
+  border-radius: 10px;
+  margin: auto;
+  position: relative;
+  bottom: 5vh;
+}
+.detail .panel {
+  display: flex;
+  flex-flow: row nowrap;
+  width: 80%;
+  margin: auto;
+  overflow: hidden;
+  overflow-x: auto;
+  max-height: 200px;
+  position: relative;
+}
+.detail .panel div {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+.detail .panel div img {
+  width: 60%;
+  margin: auto;
+  height: auto;
+}
+.detail .panel div small {
+  background-color: gold;
+  color: black;
+}
+
+.price {
   position: absolute;
-  top: 10px;
+  top: 50px;
   right: 10px;
   padding: 7px;
-  font-size: 3em;
+  font-size: 2em;
   font-weight: 900;
   background-color: white;
   color: gold;
@@ -79,20 +152,71 @@ header a {
   transform: rotateZ(-10deg);
   z-index: 500;
 }
-.containerBandejas div:hover {
-  cursor: pointer;
-  background-color: #75B09C;
+
+.priceDetail {
+  top: 200px;
+  right: 200px;
+  font-size: 2vw;
+  font-weight: 900;
+  background-color: #ca7835;
+  color: black;
+  border-radius: 5px;
+  z-index: 500;
+  max-width: 30%;
+  margin: auto;
+  max-height: 40px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  margin: auto;
 }
-.containerBandejas div:hover span {
-  transform: rotateZ(0deg);
-  color: #998650;
-  background-color: #E0BE36;
-  transform: scale(1.2);
-  transition: 0.4s ease-in-out;
+
+.priceList {
+  position: absolute;
+  top: 40px;
 }
-.containerBandejas a, .containerBandejas a:hover {
-  text-decoration: none;
-  color: rgba(0, 0, 0, 0.74);
+
+/* BARRA DE SCROLL */
+::-webkit-scrollbar {
+  width: 14px;
+  height: 14px;
+}
+
+::-webkit-scrollbar-button {
+  width: 0px;
+  height: 0px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #f7dacc;
+  border: 42px none #ffffff;
+  border-radius: 50px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #ffffff;
+}
+
+::-webkit-scrollbar-thumb:active {
+  background: #e4b550;
+}
+
+::-webkit-scrollbar-track {
+  background: #9b6631;
+  border: 0px solid #ffffff;
+  border-radius: 37px;
+}
+
+::-webkit-scrollbar-track:hover {
+  background: #9b6631;
+}
+
+::-webkit-scrollbar-track:active {
+  background: #17580e;
+}
+
+::-webkit-scrollbar-corner {
+  background: transparent;
 }
 
 /*# sourceMappingURL=style.css.map */

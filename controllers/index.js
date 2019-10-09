@@ -4,9 +4,8 @@ const Bandeja = require('../models/bandeja')
 
 router.get('/index', async (req, res) => {
     const listado = await Bandeja.find()
-    console.log(listado)
  
-    res.render('index', {
+    res.render('layouts/index', {
         listado
     })
 })

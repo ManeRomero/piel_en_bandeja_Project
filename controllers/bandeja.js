@@ -9,14 +9,16 @@ router.post('/create', async (req, res, next) => {
         band_name,
         band_descr,
         band_price,
-        band_foto
+        band_foto,
+        band_medidas
     } = req.body
 
     const newBandeja = new Bandeja({
         band_name,
         band_descr,
         band_price,
-        band_foto
+        band_foto,
+        band_medidas
     })
 
     await newBandeja.save()
@@ -24,5 +26,20 @@ router.post('/create', async (req, res, next) => {
 
     res.json({status: "BANDEJA GUARDADA!!!"})
 })
+
+router.get('/bandeja/:idBandeja', async (req, res) => {
+    const id = req.params.idBandeja
+    const bandeja = await Bandeja.findById(id)
+    const listaBandejas = await Bandeja.find()
+    listaBandejas.sort(function() {return Math.random() - 0.5})
+
+    res.render('layouts/detail', {
+        title: 'ESTO ES EL DETALLE DE BANDEJA',
+        bandeja,
+        listaBandejas
+    })
+    /* res.send('el id es ' + req.params.idBandeja) */
+})
+
 
 module.exports = router

@@ -1,11 +1,12 @@
 <a href="/bandeja/{{_id}}">
-    <div class="card-body">
-        <img src="/images/{{band_foto}}" class="img-fluid p-4">
+    <div>
+        <img src="/images/{{band_foto}}" class="img-fluid">
     </div>
 
     <div class="card-footer">
         <h1>{{band_name}}</h1>
         <p>{{band_descr}}</p>
-        <span>{{band_price}} €</span>
+        <span class="price">{{format band_price}}</span>
+        <small>{{medidas band_medidas}}</small>
     </div>
 </a>
