@@ -20,6 +20,12 @@ router.get('/', validate, async (req, res, next) => {
     })
 })
 
+router.get('/signup', async (req, res, next) => {
+    res.render('layouts/signup', {
+        subtitulo: 'pequeñas grandes cositas de piel'
+    })
+})
+
 router.post('/signup', async (req, res, next) => {
     console.log('AQUÍ ESTÁ ENTRANDO!!', req.body)
 

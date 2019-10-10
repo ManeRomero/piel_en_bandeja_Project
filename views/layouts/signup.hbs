@@ -1,0 +1,39 @@
+<style>
+  .bd-placeholder-img {
+    font-size: 1.125rem;
+    text-anchor: middle;
+  }
+  @media (min-width: 768px) {
+    .bd-placeholder-img-lg {
+      font-size: 3.5rem;
+    }
+  }
+</style>
+
+<div class="p-4 col-md-6 mx-auto formulario">
+  <form action="/signUp" method="POST" class="form-signin shadow marginTop2">
+    <div class="text-center mb-4">
+      <h1 class="titulo">Piel En Bandeja</h1>
+      <p class="mt-4 subtitulo">{{subtitulo}}</p>
+    </div>
+
+    <div class="form-label-group mt-4">
+      <input type="text" name="user_name" id="inputName" class="form-control" placeholder="¿Cómo te llamas?" value="{{name}}" required autofocus >
+    </div>
+
+    <div class="form-label-group mt-4">
+      <input type="email" class="form-control" name="user_email" placeholder="Dirección e-mail"
+        value="{{user_email}}" autofocus required>
+    </div>
+
+    <div class="form-label-group mt-4">
+      <input type="password" id="inputPassword" class="form-control" name="user_pass" placeholder="Contraseña"
+        value="{{user_pass}}">
+    </div>
+
+    <div class="form-label-group mt-4">
+      <input type="password" id="inputPassword2" class="form-control" name="user_conf_pass" placeholder="Confirma la Contraseña">
+    </div>
+    <button class="btn btn-lg btn-success btn-block mt-4" type="submit">Regístrame</button>
+  </form>
+</div>
