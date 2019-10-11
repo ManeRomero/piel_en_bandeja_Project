@@ -6,7 +6,7 @@ const session = require('express-session')
 const cors = require('cors')
 const app = express()
 const flash = require('connect-flash')
-
+const titles = require('./config/titles')
 
 app.set('views', path.join(__dirname, 'views'))
 app.engine('.hbs', exphbars({
@@ -58,6 +58,7 @@ app.use((req, res, next) => {
   res.locals.error_msg = req.flash('error_msg')
   res.locals.error = req.flash('error')
   res.locals.user = req.session.user;
+  res.locals.since = titles[Math.floor(Math.random() * titles.length)]
   next()
 })
 

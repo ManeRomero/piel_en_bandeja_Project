@@ -85,7 +85,6 @@ let getUserDataByEmail = async (user_email) => {
 }
 
 let saveHash = (user_hash, _id) => {
-    console.log(user_hash, ' CLG DE USER_HASH Y _ID ', _id)
     return User.findByIdAndUpdate(_id, {user_hash})
 }
 

@@ -1,12 +1,10 @@
 const { Router } = require('express')
 const router = Router()
 const Bandeja = require('../models/bandeja')
+const helper = require('../helpers/bandeja')
 
 router.post('/create', async (req, res, next) => {
-    console.log('AQUÍ ESTÁ ENTRANDO!!', req.body)
-
     const {
-        band_name,
         band_descr,
         band_price,
         band_foto,
@@ -14,16 +12,14 @@ router.post('/create', async (req, res, next) => {
     } = req.body
 
     const newBandeja = new Bandeja({
-        band_name,
         band_descr,
         band_price,
         band_foto,
         band_medidas
     })
-
+    
+    newBandeja.band_name = helper.randomName(Math.random()* 3);
     await newBandeja.save()
-    console.log('BANDEJA GUARDADA CON NOMBRE: ', newBandeja.band_name)
-
     res.json({status: "BANDEJA GUARDADA!!!"})
 })
 
@@ -38,8 +34,6 @@ router.get('/bandeja/:idBandeja', async (req, res) => {
         bandeja,
         listaBandejas
     })
-    /* res.send('el id es ' + req.params.idBandeja) */
 })
-
 
 module.exports = router
