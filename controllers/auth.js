@@ -4,17 +4,14 @@ const jsonwt = require('jsonwebtoken')
 const config = require('../config')
 const validate = require('./token')
 const User = require('../models/user')
+const helper = require('../helpers/user')
 
 router.get('/', validate, async (req, res, next) => {
-
     const user = await User.findById(req.userId, { user_pass: null }) // PARA QUE DEVUELVA TODOS LOS DATOS DE USER SIN EL PASS
-
     if (!user) {
         return res.status(404).send('ERROR EN DATOS')
     }
-
     const title = 'Piel en Bandeja'
-
     res.render('index', {
         title
     })
@@ -27,54 +24,62 @@ router.get('/signup', async (req, res, next) => {
 })
 
 router.post('/signup', async (req, res, next) => {
-    console.log('AQUÍ ESTÁ ENTRANDO!!', req.body)
 
-    const {
+    let {
         user_name,
         user_email,
         user_pass,
+        user_pass_repeat
     } = req.body
 
-    const newUser = new User({
-        user_name,
-        user_email,
-        user_pass,
-    })
+    let result = await helper.signUpProccess(user_name, user_email, user_pass, user_pass_repeat)
 
-    newUser.user_pass = await newUser.codePass(newUser.user_pass)
+    if (result === -1) {
+        req.flash('error_msg', `ERROR!! Datos mal introducidos. Revisa que la contraseña contenga un mínimo de 6 caracteres,
+                                así como Nombre y Dirección e-mail sean válidos`)
+        res.redirect('/signup')
+    } else {
+        user_pass = result
 
-    const token = jsonwt.sign({ id: newUser._id },
-        config.secret, {
-        expiresIn: 24 * 60 * 60
-    })
+        const newUser = new User({
+            user_name,
+            user_email,
+            user_pass,
+        })
 
-    newUser.user_hash = token
-    await newUser.save()
-    console.log('ESTA ES LA CONTRASEÑA CODIFICADA!', newUser.user_pass)
+        const token = jsonwt.sign({ id: newUser._id },
+            config.secret, {
+            expiresIn: 24 * 60 * 60
+        })
 
-    res.json({status: "USUARIO GUARDADO!!!"})
+        newUser.user_token = token
+        await newUser.save()
+        await helper.sendMail(user_email)
+
+        req.flash('success_msg', `Genial, ${user_name}. Verifica el mail que hemos enviado a ${user_email}!`)
+        res.redirect('/index')
+    }
 })
 
-router.post('signin', async (req, res, next) => {
-    const { user_email, user_pass } = req.body
-    const isUser = await User.findOne({ user_email })
+router.get('/activate/:hash', (req, res) => {
 
-    if (!isUser) {
-        return res.status(404).send('PROBLEMAS CON MAIL')
+    /* let hash = req.params.hash
+    let hashFound = await controller.findHash(hash)
+    if (hashFound === -1) {
+        req.flash('error_msg', 'ERROR!! Hash incorrecto para verificación!')
+        res.redirect('/')
     }
+    let id = hashFound.dataValues.UserId
+    let data = await helper.getUserDatabyId(id)
+    let activation = await helper.updateActive(id)
 
-    const checking = await isUser.validaPass(user_pass)
-    if (!checking) {
-        return res.status(401).json('ERROR EN AUTENTICACIÓN')
-    }
-
-    console.log(checking)
-
-    const token = jsonwt.sign({ id: isUser._id }, config.secret, {
-        expiresIn: 60 * 60 * 24
-    })
-    /* res.json(isUser, token) */
-    res.redirect('/')
+    if (activation === 1) {
+        req.flash('success_msg', `Genial ${data.name}! Has verificado tu cuenta. Te damos la bienvenida!`)
+        res.redirect('/')
+    } else {
+        res.redirect('/user/register')
+    } */
 })
+
 
 module.exports = router

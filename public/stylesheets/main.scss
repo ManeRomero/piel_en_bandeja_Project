@@ -3,7 +3,8 @@ $colorVivo: #E0BE36;
 $colorNaranja: rgba(119, 95, 17, 0.11);
 $colorClaro: rgb(79, 128, 63);
 $colorVerde: #D8F793;
-$sombra: 7px 7px 5px 3px rgba(0,0,0,0.29);
+$sombra: 7px 7px 5px 0px rgba(0,0,0,0.29);
+
 
 html {
     background-color: rgb(124, 112, 112);
@@ -67,10 +68,10 @@ header {
     }
 
     .reg:hover {
-        border: 3px solid white;
+        border: 3px dotted gold;
         box-shadow: $sombra;
         transform: translateY(-10px);
-        transition: .5s all ease-in-out;
+        transition: .2s all ease-in-out;
     }
 }
 
@@ -224,7 +225,12 @@ header {
     border: 1px solid grey;
     border-radius: 20px;
     box-shadow: $sombra;
-    margin-top: 10vh
+    margin-top: 10vh;
+
+    input {
+        border: 0 !important;
+        border-bottom: 3px solid $colorClaro !important;
+    }
 }
 
 /* BARRA DE SCROLL */

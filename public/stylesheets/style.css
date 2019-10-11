@@ -56,10 +56,10 @@ header .reg {
   transition: 0.5s all ease-in-out;
 }
 header .reg:hover {
-  border: 3px solid white;
-  box-shadow: 7px 7px 5px 3px rgba(0, 0, 0, 0.29);
+  border: 3px dotted gold;
+  box-shadow: 7px 7px 5px 0px rgba(0, 0, 0, 0.29);
   transform: translateY(-10px);
-  transition: 0.5s all ease-in-out;
+  transition: 0.2s all ease-in-out;
 }
 
 .containerBandejas {
@@ -83,7 +83,7 @@ header .reg:hover {
   background-color: rgba(119, 95, 17, 0.11);
 }
 .containerBandejas div:hover .price {
-  box-shadow: 7px 7px 5px 3px rgba(0, 0, 0, 0.29);
+  box-shadow: 7px 7px 5px 0px rgba(0, 0, 0, 0.29);
   transform: rotateZ(0deg);
   color: #ca7835;
   transform: scale(1.2);
@@ -181,7 +181,7 @@ header .reg:hover {
   align-items: center;
   text-align: center;
   margin: auto;
-  box-shadow: 7px 7px 5px 3px rgba(0, 0, 0, 0.29);
+  box-shadow: 7px 7px 5px 0px rgba(0, 0, 0, 0.29);
 }
 
 .titulo {
@@ -198,8 +198,12 @@ header .reg:hover {
   padding: 20px;
   border: 1px solid grey;
   border-radius: 20px;
-  box-shadow: 7px 7px 5px 3px rgba(0, 0, 0, 0.29);
+  box-shadow: 7px 7px 5px 0px rgba(0, 0, 0, 0.29);
   margin-top: 10vh;
+}
+.formulario input {
+  border: 0 !important;
+  border-bottom: 3px solid #4f803f !important;
 }
 
 /* BARRA DE SCROLL */
