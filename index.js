@@ -6,4 +6,4 @@ async function init() {
     console.log("SERVIDOR OK")
 }
 
-init();
+init()
