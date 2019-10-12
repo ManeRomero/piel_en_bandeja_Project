@@ -4,6 +4,7 @@ const Bandeja = require('../models/bandeja')
 const helper = require('../helpers/bandeja')
 const multerConfig = require('../config/multer')
 const imageController = require('./image')
+const cloudinary = require('cloudinary')
 
 router.get('/bandeja/:idBandeja', async (req, res) => {
     const id = req.params.idBandeja
