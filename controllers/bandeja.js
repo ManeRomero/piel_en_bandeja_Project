@@ -2,8 +2,29 @@ const { Router } = require('express')
 const router = Router()
 const Bandeja = require('../models/bandeja')
 const helper = require('../helpers/bandeja')
+const multerConfig = require('../config/multer')
+const imageController = require('./image')
 
-router.post('/create', async (req, res, next) => {
+router.get('/bandeja/:idBandeja', async (req, res) => {
+    const id = req.params.idBandeja
+    const bandeja = await Bandeja.findById(id)
+    const listaBandejas = await Bandeja.find()
+    listaBandejas.sort(function() {return Math.random() - 0.5})
+
+    res.render('layouts/detail', {
+        title: 'ESTO ES EL DETALLE DE BANDEJA',
+        bandeja,
+        listaBandejas
+    })
+})
+
+router.get('/create', (req, res) => {
+    res.render('layouts/create', {
+        subtitulo: 'Registro de nueva Bandeja' 
+    })
+})
+
+router.post('/create', multerConfig.array('bandejaPics', 100), async (req, res, next) => {
     const {
         band_descr,
         band_price,
@@ -18,22 +39,17 @@ router.post('/create', async (req, res, next) => {
         band_medidas
     })
     
-    newBandeja.band_name = helper.randomName(Math.random()* 3);
-    await newBandeja.save()
-    res.json({status: "BANDEJA GUARDADA!!!"})
-})
+    newBandeja.band_name = helper.randomName();
+        let save = await newBandeja.save()
+        let uploadedImages = await imageController.managePics(req.files, save._id)
 
-router.get('/bandeja/:idBandeja', async (req, res) => {
-    const id = req.params.idBandeja
-    const bandeja = await Bandeja.findById(id)
-    const listaBandejas = await Bandeja.find()
-    listaBandejas.sort(function() {return Math.random() - 0.5})
-
-    res.render('layouts/detail', {
-        title: 'ESTO ES EL DETALLE DE BANDEJA',
-        bandeja,
-        listaBandejas
-    })
+        if (uploadedImages != null) {
+            req.flash('success_msg', 'GENIAL! HAS CREADO TU BANDEJA!')
+            res.redirect('/index')
+        } else {
+            req.flash('error_msg', 'ERROR!! No pudimos registrar tu nuevo Destino.')
+            res.redirect('/create')
+        }
 })
 
 module.exports = router

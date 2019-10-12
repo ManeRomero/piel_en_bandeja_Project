@@ -1,13 +1,7 @@
-const words = require('../config/names')
+const names = require('../config/names')
 
-let randomName = (num) => {
-    let name = ''
-    for (let i = 0; i <= num; i++) {
-        name += words[Math.floor(Math.random() * words.length)]
-    }
-    
-    name = name.charAt(0).toUpperCase() + name.slice(1)   
-    return name
+let randomName = () => {
+    return names[Math.floor(Math.random() * names.length)]
 }
 
 module.exports = {

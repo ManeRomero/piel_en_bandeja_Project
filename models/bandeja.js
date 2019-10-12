@@ -4,8 +4,11 @@ const BandejaSchema = new Schema({
     band_name: String,
     band_descr: String,
     band_price: String,
-    band_foto: String,
-    band_medidas: String
+    band_fotos: {
+        url: String,
+        _id: String
+    },
+    band_medidas: String,
 })
 
 module.exports = model('Bandeja', BandejaSchema)

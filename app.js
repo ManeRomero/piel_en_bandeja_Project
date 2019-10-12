@@ -7,6 +7,7 @@ const cors = require('cors')
 const app = express()
 const flash = require('connect-flash')
 const titles = require('./config/titles')
+const override = require('method-override')
 
 app.set('views', path.join(__dirname, 'views'))
 app.engine('.hbs', exphbars({
@@ -68,8 +69,7 @@ app.use(bodyParser.urlencoded({ extended: false }))
 
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'uploads')));
-
-
+app.use(override('_method'))
 
 app.use(require('./controllers/auth'))
 app.use(require('./controllers/bandeja'))

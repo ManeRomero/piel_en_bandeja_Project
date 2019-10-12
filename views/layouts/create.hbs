@@ -1,0 +1,24 @@
+<div class="p-4 col-md-6 mx-auto formulario">
+  <form action="/create" enctype="multipart/form-data" method="POST">
+    <div class="text-center mb-4">
+      <h1 class="titulo">Piel En Bandeja</h1>
+      <p class="mt-4 subtitulo">{{subtitulo}}</p>
+    </div>
+
+    <div class="form-label-group mt-4 col-md-6 col-xs-12 mx-auto">
+      <input type="number" class="form-control" name="band_price" placeholder="Precio Bandeja" autofocus required>
+    </div>
+
+    <div class="form-label-group mt-4 col-md-6 col-xs-12 mx-auto">
+      <input type="text" class="form-control" name="band_medidas" placeholder="Medidas (num x num)" required>
+    </div>
+
+    <div class="form-label-group mt-4 col-md-6 col-xs-12 mx-auto">
+        <label for="">Descripción</label>
+        <textarea name="band_descr" class="form-control"></textarea>
+    </div>
+
+    <input type="file" class="form-control col-md-6 mx-auto" name="bandejaPics"  value="Sube Fotografías" multiple="10">
+    <button class="btn btn-lg btn-success btn-block mt-4 col-md-6 col-xs-12 mx-auto" type="submit">Regístrame</button>
+  </form>
+</div>
