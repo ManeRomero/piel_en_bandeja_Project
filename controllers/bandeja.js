@@ -45,10 +45,10 @@ router.post('/create', multerConfig.array('bandejaPics', 100), async (req, res, 
         let uploadedImages = await imageController.managePics(req.files, save._id)
 
         if (uploadedImages != null) {
-            req.flash('success_msg', 'GENIAL! HAS CREADO TU BANDEJA!')
+            req.flash('success_msg', 'Genial, bandeja creada.')
             res.redirect('/index')
         } else {
-            req.flash('error_msg', 'ERROR!! No pudimos registrar tu nuevo Destino.')
+            req.flash('error_msg', 'ERROR!! No pudimos registrar tu nueva Bandeja.')
             res.redirect('/create')
         }
 })
