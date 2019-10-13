@@ -34,12 +34,16 @@ header {
     margin: auto;
     background-color: white;
     align-items: center;
-    text-align: center;
     position: sticky;
     top: 0;
     z-index: 1000;
     width: 100%;
     border-bottom: 3px solid grey;
+
+    .logo {
+        width: 30%;
+        height: auto;
+    }
 
     .fakeDiv {
         width: 100%;
@@ -127,8 +131,12 @@ header {
     }
 
     .band:hover {
-        background-color: $colorNaranja;
         transition: 1.3 all ease-in-out;
+        box-shadow: $sombra;
+        border: 2px solid grey;
+        border-left: 0;
+        border-top: 0;
+        transform: translateY(-15px);
     }
 
     .band:hover .price {
@@ -139,6 +147,7 @@ header {
         border: 1px solid grey;
         background-color: white;
         transition: .5s ease-in-out;
+        opacity: 1;
     }
 
     div:hover img {
@@ -227,6 +236,7 @@ header {
     transform: rotateZ(-10deg);
     z-index: 500;
     transition: .5s all ease-in-out;
+    opacity: 0;
 }
 
 .priceDetail {
