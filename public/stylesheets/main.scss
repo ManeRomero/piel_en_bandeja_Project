@@ -89,6 +89,29 @@ header {
     }
 }
 
+.landingLogo {
+  margin: auto;
+  background-image: url("https://res.cloudinary.com/dm4dzbfxs/image/upload/v1570970218/gkbqhdquqi5bd3arrkbr.jpg");
+  background-size: 100%;
+  height: 560px;
+  width: 560px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  background-attachment: fixed;
+
+  @media (max-width: 767px) {
+    height: 330px;
+    width: 330px;
+}
+
+  img {
+    margin: auto;
+    width: 100vw;
+    height: auto;
+  }
+}
+
 .containerBandejas {
     margin: 20px auto;
     display: flex;

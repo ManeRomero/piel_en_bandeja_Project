@@ -196,6 +196,24 @@ header small {
   box-shadow: 7px 7px 5px 0px rgba(0, 0, 0, 0.102);
 }
 
+.landingLogo {
+  margin: auto;
+  background-image: url("https://res.cloudinary.com/dm4dzbfxs/image/upload/v1570970221/rrtsrlh8yvrraemqmped.jpg");
+  background-size: 200%;
+  height: 105vh;
+  width: 100vw;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: fixed;
+  background-color: #17580e44;
+}
+
+.landingLogo img {
+  margin: auto;
+  width: 100vw;
+  height: auto;
+}
+
 .titulo {
   font-size: 5vw;
   letter-spacing: 5px;
@@ -211,7 +229,6 @@ header small {
   border: 1px solid grey;
   border-radius: 20px;
   box-shadow: 7px 7px 5px 0px rgba(0, 0, 0, 0.102);
-  margin-top: 10vh;
 }
 .formulario input {
   border: 0 !important;
@@ -220,10 +237,6 @@ header small {
 
 footer {
   height: 50px;
-  position: fixed;
-  bottom: 0;
-  width: 100%;
-  z-index: 2000;
 }
 
 /* BARRA DE SCROLL */
