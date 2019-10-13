@@ -1,23 +1,24 @@
 {{#with bandeja}}
-    <section class="detail">
-        <div>            
-            <img src="/images/{{band_foto}}" alt="" class="img-fluid">
-        </div>
-        <div>
-            <h1>{{band_name}}</h1>
-            <small>{{medidas band_medidas}}</small>
-            <p>{{band_descr}}</p>
-            <span class="priceDetail">{{format band_price}}</span>
-            <h3>También te puede interesar...</h3>
-            <div class="panel">
-                {{#each ../listaBandejas}}
-                        <div class="col-md-4" title="{{band_name}} &#x000D;&#x000A;{{format band_price}}. &#x000D;&#x000A;{{medidas band_medidas}}">
-                            <a href="/bandeja/{{_id}}">
-                                <img src="/images/{{band_foto}}" alt="Foto de bandeja {{band_name}}" class="">
-                            </a>
-                        </div>
-                {{/each}}
+<section class="detail">
+    <div>
+        <img src="/images/{{band_foto}}" alt="" class="img-fluid">
+    </div>
+    <div>
+        <h1>{{band_name}}</h1>
+        <small>{{medidas band_medidas}}</small>
+        <p>{{band_descr}}</p>
+        <span class="priceDetail">{{format band_price}}</span>
+        <h3>También te puede interesar...</h3>
+        <div class="panel">
+            {{#each ../listaBandejas}}
+            <div class="col-md-4"
+                title="{{band_name}} &#x000D;&#x000A;{{format band_price}}. &#x000D;&#x000A;{{medidas band_medidas}}">
+                <a href="/bandeja/{{_id}}">
+                    <img src="/images/{{band_foto}}" alt="Foto de bandeja {{band_name}}" class="">
+                </a>
             </div>
+            {{/each}}
         </div>
-    </section>
+    </div>
+</section>
 {{/with}}
