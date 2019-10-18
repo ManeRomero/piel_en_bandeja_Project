@@ -1,5 +1,5 @@
 node_modules
 bash.exe.stackdump
 /public/images
-/config/personal.js
+perso*
 public/uploads

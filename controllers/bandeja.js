@@ -21,7 +21,7 @@ router.get('/bandeja/:idBandeja', async (req, res) => {
 
 router.get('/create', (req, res) => {
     res.render('layouts/create', {
-        subtitulo: 'Registro de nueva Bandeja' 
+        subtitulo: 'Registro de nueva Bandeja'
     })
 })
 
@@ -39,7 +39,7 @@ router.post('/create', multerConfig.array('bandejaPics', 100), async (req, res, 
         band_foto,
         band_medidas
     })
-    
+
     newBandeja.band_name = helper.randomName();
         let save = await newBandeja.save()
         let uploadedImages = await imageController.managePics(req.files, save._id)

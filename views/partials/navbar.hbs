@@ -3,15 +3,22 @@
         <a href="/index">
             <h1>Piel en Bandeja</h1>
         </a>
-    </div>    
+    </div>
     <div>
         <p>Since {{since}}</p>
         <a class="fakeDiv" href="#">
             <small>Descubre un poquito nuestra filosofía</small>
         </a>
     </div>
+{{#if user}}
+    <div>
+        <h1>HOLA {{user.user_name}}</h1>
+    </div>
+{{else}}
     <div>
         <a class="reg" href="/signup">Regístrate!</a>
-        <a class="reg" href="/create">Crea!</a>
+        <a class="reg" href="/login">Inicia Sesión</a>
+        {{!-- <a class="reg" href="/create">Crea!</a> --}}
     </div>
+{{/if}}
 </header>

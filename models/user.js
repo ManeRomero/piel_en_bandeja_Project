@@ -6,7 +6,11 @@ const UserSchema = new Schema({
     user_email: String,
     user_pass: String,
     user_token: String,
-    user_hash: String
+    user_hash: String,
+    user_active: {
+        type: Boolean,
+        default: false
+    }
 })
 
 UserSchema.methods.codePass = async (pass) => {

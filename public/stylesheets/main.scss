@@ -96,13 +96,13 @@ header {
     flex-flow: row wrap;
     align-content: center;
     width: 75%;
-    
+
     .band {
         .card-footer {
             border-top: 0;
         }
     }
-    
+
     .band:hover {
         background-color: $colorNaranja;
         transition: 1.3 all ease-in-out;
@@ -147,11 +147,11 @@ header {
         padding: 5vh;
         text-align: center
     }
-    
+
     img {
         margin: auto;
         width: 30vw;
-        height: auto;              
+        height: auto;
     }
 
     small {
@@ -177,7 +177,7 @@ header {
             display: flex;
             flex-direction: column;
             width: 100%;
-            
+
             img {
                 width: 60%;
                 margin: auto;
@@ -200,7 +200,7 @@ header {
     font-size: 1.6em;
     font-weight: 900;
     background-color: transparent;
-    color: black;    
+    color: black;
     border-radius: 5px;
     transform: rotateZ(-10deg);
     z-index: 500;

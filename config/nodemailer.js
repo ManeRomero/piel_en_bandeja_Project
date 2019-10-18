@@ -1,9 +1,10 @@
 const nodemailer = require('nodemailer')
-const personalData = require('./personal')
+const personalData = require('./personalMail')
 
 let email = {}
 
-email.transporter = nodemailer.createTransport(personalData, {
+email.transporter = nodemailer.createTransport(personalData,
+    {
     from: 'pielenbandeja@gmail.com',
     headers: {}
 })

@@ -6,7 +6,7 @@ var storage = multer.diskStorage({
         cb(null, 'public/uploads')
     },
     filename: function (req, file, cb) {
-        cb(null, rename.codexName() + Date.now() + 
+        cb(null, rename.codexName() + Date.now() +
         file.originalname.slice(file.originalname.lastIndexOf('.'),
         file.originalname.length))
     }
