@@ -78,7 +78,7 @@ let sendMail = async (dataEmail) => {
 }
 
 let getUserDataByEmail = async (user_email) => {
-    let result = await User.findOne({user_email})
+    let result = await User.findOne({ user_email })
 
     if (result === null) {
         return -1
@@ -88,7 +88,7 @@ let getUserDataByEmail = async (user_email) => {
 }
 
 let saveHash = (user_hash, _id) => {
-    return User.findByIdAndUpdate(_id, {user_hash})
+    return User.findByIdAndUpdate(_id, { user_hash })
 }
 
 let findHash = async (user_hash) => {

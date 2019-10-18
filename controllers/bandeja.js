@@ -10,7 +10,7 @@ router.get('/bandeja/:idBandeja', async (req, res) => {
     const id = req.params.idBandeja
     const bandeja = await Bandeja.findById(id)
     const listaBandejas = await Bandeja.find()
-    listaBandejas.sort(function() {return Math.random() - 0.5})
+    listaBandejas.sort(function () { return Math.random() - 0.5 })
 
     res.render('layouts/detail', {
         title: 'ESTO ES EL DETALLE DE BANDEJA',
@@ -41,16 +41,16 @@ router.post('/create', multerConfig.array('bandejaPics', 100), async (req, res, 
     })
 
     newBandeja.band_name = helper.randomName();
-        let save = await newBandeja.save()
-        let uploadedImages = await imageController.managePics(req.files, save._id)
+    let save = await newBandeja.save()
+    let uploadedImages = await imageController.managePics(req.files, save._id)
 
-        if (uploadedImages != null) {
-            req.flash('success_msg', 'Genial, bandeja creada.')
-            res.redirect('/index')
-        } else {
-            req.flash('error_msg', 'ERROR!! No pudimos registrar tu nueva Bandeja.')
-            res.redirect('/create')
-        }
+    if (uploadedImages != null) {
+        req.flash('success_msg', 'Genial, bandeja creada.')
+        res.redirect('/index')
+    } else {
+        req.flash('error_msg', 'ERROR!! No pudimos registrar tu nueva Bandeja.')
+        res.redirect('/create')
+    }
 })
 
 module.exports = router
