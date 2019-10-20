@@ -13,7 +13,7 @@ router.get('/activation/:hash', activation)
 router.get('/login', loginForm)
 router.post('/login', login)
 
-async function validationProccess (req, res, next) {
+async function validationProccess(req, res, next) {
     const user = await User.findById(req.userId, { user_pass: null }) // PARA QUE DEVUELVA TODOS LOS DATOS DE USER SIN EL PASS
     if (!user) {
         return res.status(404).send('ERROR EN DATOS')
@@ -24,13 +24,13 @@ async function validationProccess (req, res, next) {
     })
 }
 
-async function signupForm (req, res, next) {
+async function signupForm(req, res, next) {
     res.render('layouts/signup', {
         subtitulo: 'pequeñas grandes cositas de piel'
     })
 }
 
-async function signup (req, res, next) {
+async function signup(req, res, next) {
     let {
         user_name,
         user_email,
@@ -67,7 +67,7 @@ async function signup (req, res, next) {
     }
 }
 
-async function activation (req, res) {
+async function activation(req, res) {
     let hash = req.params.hash
     let hashFound = await helper.findHash(hash)
     if (hashFound === -1) {
@@ -85,16 +85,18 @@ async function activation (req, res) {
         req.flash('success_msg', `Genial ${hashFound.user_name}!
         Has verificado tu cuenta. Te damos la bienvenida!`)
         res.redirect('/index')
+        let usuario = await User.findById(hashFound._id)
+        console.log(usuario, 'CONSOLE LOG DE USUARIO')
     }
 }
 
-async function loginForm (req, res) {
+async function loginForm(req, res) {
     res.render('layouts/login', {
         subtitulo: 'pequeñas grandes cositas de piel'
     })
 }
 
-async function login (req, res) {
+async function login(req, res) {
     let {
         user_email,
         user_pass,
@@ -107,7 +109,6 @@ async function login (req, res) {
         tu cuenta mediante el mail de activación. Revísalo todo!`)
         res.redirect('/login')
     } else {
-        console.log(result, 'CLG DE RESULTAAAAAAAA')
         startSession(req, res, result)
     }
 }
@@ -119,6 +120,7 @@ let startSession = (req, res, data) => {
     /* req.session.admin = data.admin */
     req.session.user = data;
 
+    console.log('SESIÓN COMENZADA[futuroWINSTON]: ', req.session.name)
     req.flash('success_msg', `Hola ${req.session.name}, qué quieres hacer hoy?`)
     res.redirect('/index')
 }

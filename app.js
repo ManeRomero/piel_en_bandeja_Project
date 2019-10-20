@@ -48,7 +48,7 @@ app.use(session({
   resave: true,
   saveUninitialized: true,
   cookie: {
-    maxAge: 60*1000,
+    maxAge: 60 * 1000,
     Secure: true
   }
 }))
@@ -74,5 +74,6 @@ app.use(override('_method'))
 app.use(require('./controllers/auth'))
 app.use(require('./controllers/bandeja'))
 app.use(require('./controllers/index'))
+app.use(require('./controllers/admin'))
 
 module.exports = app;

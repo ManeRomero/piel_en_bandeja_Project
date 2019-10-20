@@ -1,6 +1,6 @@
 node_modules
 bash.exe.stackdump
-*personal.js
-*uploads
-*img
+pers*
+uplo*
+img*
 NOTAS.txt

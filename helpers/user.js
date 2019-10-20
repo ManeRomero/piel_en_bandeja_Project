@@ -19,7 +19,7 @@ let signUpProccess = async (name, email, password, password2) => {
 }
 
 let checkMail = async (user_email) => {
-    let result = await User.findOne({user_email})
+    let result = await User.findOne({ user_email })
     if (result === null) {
         return 'OKAY'
     } else {
@@ -33,7 +33,7 @@ let managePassword = async (user_pass) => {
 }
 
 let validate = (name, email, pass, pass2) => {
-    if (name.lenght < 2 || email.length < 6 || pass.length < 6 ) {
+    if (name.lenght < 2 || email.length < 6 || pass.length < 6) {
         return false
     } else if (pass !== pass2) {
         return false
@@ -92,7 +92,7 @@ let saveHash = (user_hash, _id) => {
 }
 
 let findHash = async (user_hash) => {
-    let result = await User.findOne({user_hash})
+    let result = await User.findOne({ user_hash })
     if (result === null) {
         return -1
     }
@@ -100,9 +100,7 @@ let findHash = async (user_hash) => {
 }
 
 let activateUser = async (user) => {
-    let result = await User.findOneAndUpdate(user.user_hash, {user_active: true})
-
-    console.log (result, 'CONSOLE DE RESULTT')
+    let result = await User.findOneAndUpdate({ _id: user._id }, { user_active: true })
     if (result === null) {
         return -1
     }

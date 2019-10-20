@@ -1,0 +1,36 @@
+<h1>{{title}}</h1>
+<h6>{{subtitle}}</h6>
+<br>
+
+<p>
+    <button class="btn btn-success" type="button" data-toggle="collapse" data-target="#colBandejas"
+        aria-expanded="false" aria-controls="collapseBandejas">Listar Bandejas
+    </button>
+    <button class="btn btn-success" type="button" data-toggle="collapse" data-target="#colUsuarios"
+        aria-expanded="false" aria-controls="collapseUsuarios">Listar Usuarios
+    </button>
+    <a class="btn btn-info text-white" href="/create">Crear Bandeja</a>
+</p>
+
+<div class="collapse" id="colBandejas">
+    <ul class="list-group list-group-flush">
+        {{#each bandejas}}
+        <li>
+            <small class="col-md-6">{{band_name}}</small>
+            {{#each fotos}}
+            <div class="col-md-6">
+                <img src="https://res.cloudinary.com/dm4dzbfxs/image/upload/{{img_url}}" alt=""
+                    class="img-fluid img-thumbnail">
+            </div>
+            {{/each}}
+        </li>
+        {{/each}}
+    </ul>
+</div>
+<div class="collapse" id="colUsuarios">
+    <div class="card card-body">
+        {{#each usersList}}
+        <li class="col-md-6">{{user_name}}</li>
+        {{/each}}
+    </div>
+</div>

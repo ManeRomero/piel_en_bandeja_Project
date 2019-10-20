@@ -10,6 +10,10 @@ const UserSchema = new Schema({
     user_active: {
         type: Boolean,
         default: false
+    },
+    user_admin: {
+        type: Boolean,
+        default: false
     }
 })
 

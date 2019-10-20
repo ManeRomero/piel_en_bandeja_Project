@@ -13,18 +13,21 @@
         </div>
         <div class="col-md-5">
             {{#if user}}
-                <div>
-                    <h1>hola {{user.user_name}}</h1>
-                </div>
+                {{#if user.user_admin}}
+                    <a href="/admin" class="reg">Panel de Control</a>
+                {{else}}
+                    <div>
+                        <h1>hola {{user.user_name}}</h1>
+                    </div>
+                {{/if}}
             {{else}}
                 <div>
-                <div class="text-center btnDiv">
-                    <a href="#compra" class="reg">Compra!</a>
-                    <a class="reg" href="/signup">Regístrate!</a>
-                    <a class="reg" href="/login">Inicia Sesión</a>
-                    {{!-- <a class="reg" href="/create">Crea!</a> --}}
+                    <div class="text-center btnDiv">
+                        <a href="#compra" class="reg">Compra!</a>
+                        <a class="reg" href="/signup">Regístrate!</a>
+                        <a class="reg" href="/login">Inicia Sesión</a>
+                    </div>
                 </div>
             {{/if}}
         </div>
-    </div>
 </header>
