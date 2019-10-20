@@ -14,6 +14,7 @@
         <p>{{band_descr}}</p>
         <span class="price">{{format band_price}}</span>
         <small>{{medidas band_medidas}}</small>
+        <button class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-sm2"></button>
     </div>
 </a>
 
@@ -21,7 +22,7 @@
 <script>
     var swiper = new Swiper('.swiper-container', {
         cubeEffect: {
-            slideShadows: false,
+            slideShadows: true,
         },
     })
 </script>
