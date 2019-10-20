@@ -1,0 +1,39 @@
+{{#with bandeja}}
+<div class="p-2 col-md-6 mx-auto formulario">
+    <small>_id: {{_id}}</small>
+    <form action="/admin/bandejaUpdate/?_method=PUT" enctype="application/x-www-form-urlencoded" method="POST">
+        <input type="hidden" name="_method" value="PUT">
+        <input type="hidden" name="_id" value="{{_id}}">
+        <div class="text-center mb-4">
+            <h1 class="titulo">Piel En Bandeja</h1>
+        </div>
+
+        <div class="form-label-group col-md-6 col-xs-6 mx-auto border-bottom">
+            <label for="">Nombre</label>
+            <input type="text" value="{{band_name}}" class="form-control" name="band_name"
+                placeholder="Medidas (num x num)" required>
+        </div>
+
+        <div class="form-label-group mt-4 col-md-6 col-xs-6 mx-auto">
+            <label for="">Precio</label>
+            <input type="number" value="{{band_price}}" class="form-control" name="band_price"
+                placeholder="Precio Bandeja" autofocus required>
+        </div>
+
+        <div class="form-label-group mt-4 col-md-6 col-xs-6 mx-auto">
+            <label for="">Medidas</label>
+            <input type="text" value="{{band_medidas}}" class="form-control" name="band_medidas"
+                placeholder="Medidas (num x num)" required>
+        </div>
+
+        <div class="form-label-group mt-4 col-md-6 col-xs-12 mx-auto">
+            <label for="">Descripción</label>
+            <textarea name="band_descr" class="form-control" required>{{band_descr}}</textarea>
+        </div>
+
+        <button class="btn btn-lg btn-success btn-block mt-4
+        col-md-6 col-xs-12 mx-auto" type="submit">Actualizar
+            Bandeja</button>
+    </form>
+</div>
+{{/with}}

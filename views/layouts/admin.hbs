@@ -12,25 +12,32 @@
     <a class="btn btn-info text-white" href="/create">Crear Bandeja</a>
 </p>
 
-<div class="collapse" id="colBandejas">
-    <ul class="list-group list-group-flush">
-        {{#each bandejas}}
+<div class="container collapse" id="colBandejas">
+    {{#each bandejas}}
+    <ul class="d-inline-flex align-middle border-bottom">
         <li>
-            <small class="col-md-6">{{band_name}}</small>
+            <h3>{{band_name}}</h3>
+            <small>{{format band_price}}</small>
+            <small>{{band_descr}}</small>
             {{#each fotos}}
-            <div class="col-md-6">
-                <img src="https://res.cloudinary.com/dm4dzbfxs/image/upload/{{img_url}}" alt=""
-                    class="img-fluid img-thumbnail">
-            </div>
+            <img src="https://res.cloudinary.com/dm4dzbfxs/image/upload/{{img_url}}" alt=""
+                class="col-md-2 img-thumbnail">
             {{/each}}
+            <div class="text-right">
+                <a href="admin/bandejaEdit/{{_id}}" class="btn btn-info text-white">editar</a>
+                <a href="admin/bandejaClear/{{_id}}" class="btn btn-danger text-white">eliminar</a>
+            </div>
         </li>
-        {{/each}}
     </ul>
+    {{/each}}
 </div>
 <div class="collapse" id="colUsuarios">
-    <div class="card card-body">
-        {{#each usersList}}
-        <li class="col-md-6">{{user_name}}</li>
-        {{/each}}
-    </div>
+    {{#each usersList}}
+    <li class="p-4">
+        <small class="col-md-6">{{user_name}}</small>
+
+        <a href="admin/userEdit/{{_id}}" class="btn btn-info text-white col-md-2 btn-xs">editar</a>
+        <a href="admin/userClear/{{_id}}" class="btn btn-danger text-white col-md-2 btn-xs">eliminar</a>
+    </li>
+    {{/each}}
 </div>
