@@ -3,11 +3,9 @@ html {
 }
 
 * {
-  transition: .6s all;
   margin: 0;
   padding: 0;
   font-family: "Lato", sans-serif;
-  scroll-behavior: smooth;
 }
 
 body {
@@ -23,60 +21,91 @@ a, a:hover .reg:hover {
 }
 
 header {
+  width: 100%;
+  background: #ca7835;
+  z-index: 500;
+  position: sticky;
+  top: 0;
+  transition: 0.8s;
+}
+header:hover {
+  background-color: gold;
+}
+header .headerContain {
   display: flex !important;
-  justify-content: space-around;
+  justify-content: space-between;
   margin: auto;
   background-color: white;
   align-items: center;
-  position: sticky;
-  top: 0;
   z-index: 1000;
   width: 100%;
   border-bottom: 3px solid grey;
+  min-height: 100px;
 }
-header .fakeDiv {
+header .headerContain .logo {
+  width: 60%;
+  height: auto;
+}
+header .headerContain .fakeDiv {
   width: 100%;
 }
-header div {
-  width: 30%;
-  margin: auto;
-  position: relative;
-}
-header h1 {
+header .headerContain h1 {
   letter-spacing: 5px;
   padding: 20px;
   color: #E0BE36;
   font-size: 3em;
 }
-header p {
+header .headerContain p {
   border-bottom: 3px solid #E0BE36;
   padding: 5px;
   letter-spacing: 5px;
   color: #E0BE36;
 }
-header .reg {
-  background-color: #E0BE36;
-  padding: 15px;
+header .headerContain .reg {
+  padding: 7px;
   color: #ca7835 !important;
   border-radius: 10px;
   font-weight: 900;
   transition: 0.5s all ease-in-out;
+  border: 2px solid black;
 }
-header .reg:hover {
+header .headerContain .reg:hover {
   border: 3px dotted gold;
   box-shadow: 7px 7px 5px 0px rgba(0, 0, 0, 0.102);
-  transform: translateY(-10px);
+  transform: translateY(-50px);
   transition: 0.2s all ease-in-out;
+  background-color: white;
+  z-index: 1000;
 }
-header .logo {
-  width: 30%;
-  height: auto;
-}
-header small {
+header .headerContain small {
   color: #E0BE36;
   position: absolute;
   top: 45px;
-  right: 0;
+  right: 50%;
+  text-align: center;
+}
+
+.landingLogo {
+  margin: auto;
+  background-image: url("https://res.cloudinary.com/dm4dzbfxs/image/upload/v1570970218/gkbqhdquqi5bd3arrkbr.jpg");
+  background-size: 100%;
+  height: 560px;
+  width: 560px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  background-attachment: fixed;
+}
+@media (max-width: 767px) {
+  .landingLogo {
+    height: 330px;
+    width: 330px;
+  }
+}
+.landingLogo img {
+  margin: auto;
+  width: 100vw;
+  height: auto;
 }
 
 .containerBandejas {
@@ -203,7 +232,7 @@ header small {
   box-shadow: 7px 7px 5px 0px rgba(0, 0, 0, 0.102);
 }
 
-.landingLogo {
+.landingLogo{
   margin: auto;
   background-image: url("https://res.cloudinary.com/dm4dzbfxs/image/upload/v1570970221/rrtsrlh8yvrraemqmped.jpg");
   background-size: 230%;
@@ -224,8 +253,6 @@ header small {
 }
 
 .titulo {
-  font-size: 5vw;
-  letter-spacing: 5px;
 }
 
 .subtitulo {
@@ -238,6 +265,7 @@ header small {
   border: 1px solid grey;
   border-radius: 20px;
   box-shadow: 7px 7px 5px 0px rgba(0, 0, 0, 0.102);
+  margin-top: 10vh;
 }
 .formulario input {
   border: 0 !important;
@@ -245,11 +273,11 @@ header small {
 }
 
 footer {
+  margin-top: 100px;
   height: 50px;
-}
-
-.card-footer {
-  background-color: white !important;
+  bottom: 0;
+  width: 100%;
+  z-index: 2000;
 }
 
 /* BARRA DE SCROLL */

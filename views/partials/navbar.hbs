@@ -1,18 +1,30 @@
 <header>
-    <div class="text-center">
-        <a href="/index">
-            <img src="/img/logo_oscuro.png" class="img-fluid logo" alt="">
-        </a>
-    </div>
-    <div>
-        <p>Since {{since}}</p>
-        <a class="fakeDiv" href="#">
-            <small>Descubre un poquito nuestra filosofía</small>
-        </a>
-    </div>
-    <div class="text-center">
-        <a href="#compra" class="reg">Compra!</a>
-        <a class="reg" href="/signup">Regístrate!</a>
-        <a class="reg" href="/create">Crea!</a>
+    <div class="container headerContain">
+        <div class="text-center col-md-2">
+            <a href="/index">
+                <img src="/img/logo.png" class="img-fluid logo" alt="">
+            </a>
+        </div>
+        <div class="col-md-5">
+            <p>Since {{since}}</p>
+            <a class="fakeDiv" href="#">
+                <small>Descubre un poquito nuestra filosofía</small>
+            </a>
+        </div>
+        <div class="col-md-5">
+            {{#if user}}
+                <div>
+                    <h1>hola {{user.user_name}}</h1>
+                </div>
+            {{else}}
+                <div>
+                <div class="text-center btnDiv">
+                    <a href="#compra" class="reg">Compra!</a>
+                    <a class="reg" href="/signup">Regístrate!</a>
+                    <a class="reg" href="/login">Inicia Sesión</a>
+                    {{!-- <a class="reg" href="/create">Crea!</a> --}}
+                </div>
+            {{/if}}
+        </div>
     </div>
 </header>

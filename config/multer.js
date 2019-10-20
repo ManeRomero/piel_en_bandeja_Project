@@ -7,8 +7,8 @@ var storage = multer.diskStorage({
     },
     filename: function (req, file, cb) {
         cb(null, rename.codexName() + Date.now() +
-            file.originalname.slice(file.originalname.lastIndexOf('.'),
-                file.originalname.length))
+        file.originalname.slice(file.originalname.lastIndexOf('.'),
+        file.originalname.length))
     }
 })
 

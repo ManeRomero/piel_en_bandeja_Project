@@ -1,10 +1,9 @@
-$colorOscuro: #ca7835    ;
+$colorOscuro: #ca7835;
 $colorVivo: #E0BE36;
 $colorNaranja: rgba(119, 95, 17, 0.11);
 $colorClaro: rgb(79, 128, 63);
 $colorVerde: #D8F793;
 $sombra: 7px 7px 5px 0px rgba(0, 0, 0, 0.102);
-
 
 html {
     background-color: rgb(124, 112, 112);
@@ -20,7 +19,7 @@ body {
     width: 100vw;
     margin: auto;
     background-color:white !important;
-    min-height: 100vh;
+    min-height: 100vh
 }
 
 a, a:hover .reg:hover {
@@ -29,67 +28,76 @@ a, a:hover .reg:hover {
 }
 
 header {
-    display: flex !important;
-    justify-content: space-around;
-    margin: auto;
-    background-color: white;
-    align-items: center;
+    width: 100%;
+    background: $colorOscuro;
+    z-index: 500;
     position: sticky;
     top: 0;
-    z-index: 1000;
-    width: 100%;
-    border-bottom: 3px solid grey;
+    transition: .8s;
 
-    .logo {
-        width: 30%;
-        height: auto;
+    &:hover {
+        background-color: gold;
     }
 
-    .fakeDiv {
-        width: 100%;
-    }
-
-    div {
-        width: 30%;
+    .headerContain{
+        display: flex !important;
+        justify-content: space-between;
         margin: auto;
-        position: relative;
-    }
+        background-color: white;
+        align-items: center;
+        z-index: 1000;
+        width: 100%;
+        border-bottom: 3px solid grey;
+        min-height: 100px;
 
-    h1 {
-        letter-spacing: 5px;
-        padding: 20px;
-        color: $colorVivo;
-        font-size: 3em;
-    }
+        .logo {
+            width: 60%;
+            height: auto;
+        }
 
-    p {
-        border-bottom: 3px solid $colorVivo;
-        padding: 5px;
-        letter-spacing: 5px;
-        color: $colorVivo;
-    }
+        .fakeDiv {
+            width: 100%;
+        }
 
-    .reg {
-        background-color: $colorVivo;
-        padding: 15px;
-        color: $colorOscuro !important;
-        border-radius: 10px;
-        font-weight: 900;
-        transition: .5s all ease-in-out;
-    }
+        h1 {
+            letter-spacing: 5px;
+            padding: 20px;
+            color: $colorVivo;
+            font-size: 3em;
+        }
 
-    .reg:hover {
-        border: 3px dotted gold;
-        box-shadow: $sombra;
-        transform: translateY(-10px);
-        transition: .2s all ease-in-out;
-    }
+        p {
+            border-bottom: 3px solid $colorVivo;
+            padding: 5px;
+            letter-spacing: 5px;
+            color: $colorVivo;
+        }
 
-    small {
-        color: $colorVivo;
-        position: absolute;
-        top: 45px;
-        right: 0;
+        .reg {
+            padding: 7px;
+            color: $colorOscuro !important;
+            border-radius: 10px;
+            font-weight: 900;
+            transition: .5s all ease-in-out;
+            border: 2px solid black
+        }
+
+        .reg:hover {
+            border: 3px dotted gold;
+            box-shadow: $sombra;
+            transform: translateY(-50px);
+            transition: .2s all ease-in-out;;
+            background-color: white;
+            z-index: 1000;
+        }
+
+        small {
+            color: $colorVivo;
+            position: absolute;
+            top: 45px;
+            right: 50%;
+            text-align: center;
+        }
     }
 }
 
@@ -282,8 +290,8 @@ header {
 }
 
 footer {
+    margin-top: 100px;
     height: 50px;
-    position: fixed;
     bottom: 0;
     width: 100%;
     z-index: 2000;
