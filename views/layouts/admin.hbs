@@ -25,17 +25,21 @@
             {{/each}}
             <div class="text-right">
                 <a href="admin/bandejaEdit/{{_id}}" class="btn btn-info text-white">editar</a>
-                <a href="admin/bandejaClear/{{_id}}" class="btn btn-danger text-white">eliminar</a>
+
+                <form action="/admin/bandejaClear/{{_id}}/?_method=DELETE" method="POST">
+                    <button type="submit" class="btn btn-sm btn-outline-danger" id="del-{{_id}}">
+                        <i class="fas fa-slash"></i> Eliminar
+                    </button>
+                </form>
             </div>
         </li>
     </ul>
     {{/each}}
 </div>
-<div class="collapse" id="colUsuarios">
+<div class=" collapse" id="colUsuarios">
     {{#each usersList}}
     <li class="p-4">
         <small class="col-md-6">{{user_name}}</small>
-
         <a href="admin/userEdit/{{_id}}" class="btn btn-info text-white col-md-2 btn-xs">editar</a>
         <a href="admin/userClear/{{_id}}" class="btn btn-danger text-white col-md-2 btn-xs">eliminar</a>
     </li>

@@ -7,6 +7,7 @@ const Imagen = require('../models/image')
 router.get('/admin', adminView)
 router.get('/admin/bandejaEdit/:idBandeja', bandejaEditView)
 router.put('/admin/bandejaUpdate', bandejaUpdate)
+router.delete('/admin/bandejaClear/:idBandeja', bandejaClear)
 
 async function adminView(req, res) {
     let isAdmin = req.session /* HAY QUE CONTROLAR JSONWEBTOKEN + REQ.SESSION AQUÍ */
@@ -63,6 +64,19 @@ async function bandejaUpdate(req, res) {
     }
 
     req.flash('success_msg', 'Bandeja editada correctamente.')
+    res.redirect('/admin')
+}
+
+async function bandejaClear(req, res) {
+    let _id = req.params.idBandeja
+    let borrar = await Bandeja.findByIdAndRemove(_id)
+
+    if (borrar === null) {
+        req.flash('error_msg', 'Error Eliminando la bandeja.')
+        res.redirect('/admin')
+    }
+
+    req.flash('success_msg', 'Bandeja Eliminada Correctamente')
     res.redirect('/admin')
 }
 
