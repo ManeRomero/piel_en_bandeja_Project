@@ -1,5 +1,6 @@
 html {
   background-color: #7c7070;
+  scroll-behavior: smooth;
 }
 
 * {
@@ -137,7 +138,10 @@ header .headerContain small {
   transition: 0.5s ease-in-out;
   opacity: 1;
 }
-
+.containerBandejas div:hover img {
+  transform: scale(1.4);
+  transition: 1.3 all ease-in-out;
+}
 .containerBandejas a, .containerBandejas a:hover {
   text-decoration: none;
   color: rgba(0, 0, 0, 0.74);
@@ -232,27 +236,9 @@ header .headerContain small {
   box-shadow: 7px 7px 5px 0px rgba(0, 0, 0, 0.102);
 }
 
-.landingLogo{
-  margin: auto;
-  background-image: url("https://res.cloudinary.com/dm4dzbfxs/image/upload/v1570970221/rrtsrlh8yvrraemqmped.jpg");
-  background-size: 230%;
-  height: 105vh;
-  width: 100vw;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-attachment: fixed;
-  background-color: #17580e44;
-  border-bottom: 2px solid grey;
-  border-width: 90%;
-}
-
-.landingLogo img {
-  margin: auto;
-  width: 100vw;
-  height: auto;
-}
-
 .titulo {
+  font-size: 5vw;
+  letter-spacing: 5px;
 }
 
 .subtitulo {
