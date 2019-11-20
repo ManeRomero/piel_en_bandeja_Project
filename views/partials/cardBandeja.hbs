@@ -1,12 +1,8 @@
 <a href="/bandeja/{{_id}}">
-    <div>
-        <div class="swiper-container">
-            <div class="swiper-wrapper">
-                {{#each fotos}}
-                <img src="https://res.cloudinary.com/dm4dzbfxs/image/upload/{{img_url}}" alt="" class="img-fluid">
-                {{/each}}
-            </div>
-        </div>
+    <div class="img-container">
+        {{#each fotos}}
+        <img src="https://res.cloudinary.com/dm4dzbfxs/image/upload/{{img_url}}" alt="" class="img-fluid">
+        {{/each}}
     </div>
 
     <div class="card-footer">

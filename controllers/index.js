@@ -8,7 +8,7 @@ router.get('/index', async (req, res) => {
     if (listado !== null) {
         for (let i = 0; i < listado.length; i++) {
             let imagenes = await Imagen.find({ bandeja_id: listado[i]._id })
-            listado[i].fotos = imagenes
+            listado[i].fotos = imagenes[0]
         }
 
         res.render('layouts/index', {

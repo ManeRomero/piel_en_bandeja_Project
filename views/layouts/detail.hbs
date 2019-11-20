@@ -1,24 +1,59 @@
 {{#with bandeja}}
 <section class="detail">
     <div>
-        <img src="/images/{{band_foto}}" alt="" class="img-fluid">
-    </div>
-    <div>
-        <h1>{{band_name}}</h1>
-        <small>{{medidas band_medidas}}</small>
-        <p>{{band_descr}}</p>
-        <span class="priceDetail">{{format band_price}}</span>
-        <h3>También te puede interesar...</h3>
-        <div class="panel">
-            {{#each ../listaBandejas}}
-            <div class="col-md-4"
-                title="{{band_name}} &#x000D;&#x000A;{{format band_price}}. &#x000D;&#x000A;{{medidas band_medidas}}">
-                <a href="/bandeja/{{_id}}">
-                    <img src="/images/{{band_foto}}" alt="Foto de bandeja {{band_name}}" class="">
-                </a>
+        <div class="swiper-container">
+            <h1 class="titulo">{{band_name}}</h1>
+            <p class="descrip">{{band_descr}}</p>
+            {{#each ../imagenes}}
+            <div class="swiper-wrapper">
+                <img src="https://res.cloudinary.com/dm4dzbfxs/image/upload/{{img_url}}" alt="" class="swiper-slide">
             </div>
             {{/each}}
+
+            <div class="swiper-pagination"></div>
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div>
         </div>
+    </div>
+
+    <div class="comprar">
+        <small class="col-md-2 m-4">{{medidas band_medidas}}</small>
+        <a href="/add/{{_id}}" id="comprar" class="m-4 text-white btn btn-lg btn-success" title="Añade a la bandeja {{band_name}} a tu Carrito de la compra">
+            <span>{{format band_price}}
+                <i class="material-icons col-md-4">shopping_cart</i>
+            </span>
+        </a>
+    </div>
+    <h3 class="interesar">También te puede interesar...</h3>
+    <div class="panel">
+        {{#each ../listaBandejas}}
+        <div class="col-sml-12 col-md-3 mx-auto"
+            title="{{band_name}} &#x000D;&#x000A;{{format band_price}}. &#x000D;&#x000A;{{medidas band_medidas}}">
+            <p class="titulo tituloMini">{{band_name}}</p>
+            <a href="/bandeja/{{_id}}">
+                <img src="https://res.cloudinary.com/dm4dzbfxs/image/upload/{{imagen.img_url}}" alt=""
+                    class="swiper-slide">
+            </a>
+        </div>
+        {{/each}}
     </div>
 </section>
 {{/with}}
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.4.6/js/swiper.min.js"></script>
+
+<script>
+    var swiper = new Swiper('.swiper-container', {
+        effect: 'coverflow',
+        grabCursor: true,
+        centeredSlides: true,
+        slidesPerView: 1,
+        coverflowEffect: {
+            rotate: 0,
+            depth: 80
+        },
+        pagination: {
+            el: '.swiper-pagination',
+        },
+    })
+</script>

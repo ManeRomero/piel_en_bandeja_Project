@@ -59,6 +59,7 @@ app.use((req, res, next) => {
   res.locals.error_msg = req.flash('error_msg')
   res.locals.error = req.flash('error')
   res.locals.user = req.session.user;
+  res.locals.carrito = req.session.carrito;
   res.locals.since = titles[Math.floor(Math.random() * titles.length)]
   next()
 })
