@@ -6,14 +6,11 @@ $("[id*=del]").click((e) => {
     }
 })
 
-$("#comprar").click((e) => {
+/*  $("#comprar").click((e) => {
     e.preventDefault()
     $.ajax({
-        url: e.currentTarget.href, success: function (result) {
-            console.log(result);
-        }
-    })
-})
+        url: e.currentTarget.href, success: function (result) {}})
+}) */
 
 $(function () {
     var imagesPreview = function (input, placeToInsertImagePreview) {

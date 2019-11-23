@@ -8,15 +8,29 @@ const imageController = require('./image')
 const multerConfig = require('../config/multer')
 const cloudinary = require('cloudinary')
 
-router.get('/bandeja/:idBandeja', async (req, res) => {
+router.get('/bandeja/:idBandeja', detailBandeja)
+router.get('/create', createView)
+router.post('/create', multerConfig.array('bandejaPics', 100), createBandeja)
+router.get('/add/:id', addCarrito)
+router.get('/carrito', carritoView)
+router.get('/seguir', randomBandeja)
+
+async function detailBandeja (req, res) {
     const id = req.params.idBandeja
     const bandeja = await Bandeja.findById(id)
     const imagenes = await Imagen.find({ bandeja_id: id })
     const listaBandejas = await Bandeja.find()
+    var buttonEnabled = true
 
     for (let i = 0; i < listaBandejas.length; i++) {
         let imagenes = await Imagen.find({ bandeja_id: listaBandejas[i]._id })
         listaBandejas[i].imagen = imagenes[0]
+    }
+
+    if (req.session.carrito !== undefined) {
+        if (req.session.carrito.indexOf(id) !== -1) {
+            buttonEnabled = false
+        }
     }
 
     listaBandejas.sort(function () { return Math.random() - 0.5 })
@@ -24,17 +38,18 @@ router.get('/bandeja/:idBandeja', async (req, res) => {
         title: 'ESTO ES EL DETALLE DE BANDEJA',
         bandeja,
         listaBandejas,
-        imagenes
+        imagenes,
+        buttonEnabled
     })
-})
+}
 
-router.get('/create', (req, res) => {
+async function createView (req, res) {
     res.render('layouts/create', {
         subtitulo: 'Registro de nueva Bandeja'
     })
-})
+}
 
-router.post('/create', multerConfig.array('bandejaPics', 100), async (req, res, next) => {
+async function createBandeja (req, res, next) {
     const {
         band_descr,
         band_price,
@@ -60,17 +75,52 @@ router.post('/create', multerConfig.array('bandejaPics', 100), async (req, res, 
         req.flash('error_msg', 'ERROR!! No pudimos registrar tu nueva Bandeja.')
         res.redirect('/create')
     }
-})
+}
+async function addCarrito (req, res) {
+    let id = req.params.id
+    if (req.session.user === undefined) {
+        req.flash('error_msg',
+        'Inicia tu sesión para proceder con la compra')
+        res.redirect('/bandeja/' + id)
+    } else {
+        if (req.session.carrito === undefined) {
+            req.session.carrito = []
+        }
+            req.session.carrito.push(id)
+            req.flash('succes_msg', 'Genial! Has añadido una bandeja a tu Carrito!')
+            res.redirect('/bandeja/' + id)
+    }
+}
+async function carritoView (req, res) {
+    let noCarrito = true
+    let carritoIds = []
+    let listado = []
 
-router.get('/add/:id', async (req, res) => {
-    if (req.session.carrito === undefined) {
-        req.session.carrito = []
+    if (req.session.carrito !== undefined) {
+        noCarrito = false
+        carritoIds = req.session.carrito
     }
 
-    req.session.carrito.push(req.params.id)
-    console.log(req.session.carrito, 'ESTO ES EL CARRITO DE LA COMPRA')
-    res.send('bandeja añadida')
-    req.flash('Genial! Has añadido una bandeja a tu Carrito!')
-})
+    for (let i = 0; i < carritoIds.length; i++) {
+        let bandeja = await Bandeja.findById({_id: carritoIds[i]})
+        listado.push(bandeja)
+    }
+
+    for (let i = 0; i < listado.length; i++) {
+        let imagenes = await Imagen.find({ bandeja_id: listado[i]._id })
+        listado[i].fotos = imagenes[0]
+    }
+
+    res.render('layouts/carrito', {
+        subtitulo: 'Mis Compras',
+        noCarrito,
+        listado
+    })
+}
+async function randomBandeja (req, res) {
+    let bandejas = await Bandeja.find()
+    let bandeja = bandejas[Math.floor(Math.random() * bandejas.length)]._id
+    res.redirect('/bandeja/' + bandeja)
+}
 
 module.exports = router

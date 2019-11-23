@@ -18,11 +18,20 @@
 
     <div class="comprar">
         <small class="col-md-2 m-4">{{medidas band_medidas}}</small>
-        <a href="/add/{{_id}}" id="comprar" class="m-4 text-white btn btn-lg btn-success" title="Añade a la bandeja {{band_name}} a tu Carrito de la compra">
-            <span>{{format band_price}}
-                <i class="material-icons col-md-4">shopping_cart</i>
-            </span>
-        </a>
+        {{#if ../buttonEnabled}}
+            <a href="/add/{{_id}}" id="comprar" class="m-4 text-white btn btn-lg btn-success" title="Añade a la bandeja {{band_name}} a tu Carrito de la compra">
+                <span>{{format band_price}}
+                    <i class="material-icons col-md-4">shopping_cart</i>
+                </span>
+            </a>
+        {{else}}
+            <a href="#" title="Ya tienes la bandeja {{band_name}} en tu Carrito de la compra"
+            class="m-4 text-white btn btn-lg btn-info disabled">
+                <span>Bandeja añadida
+                    <i class="material-icons col-md-4">done</i>
+                </span>
+            </a>
+        {{/if}}
     </div>
     <h3 class="interesar">También te puede interesar...</h3>
     <div class="panel">

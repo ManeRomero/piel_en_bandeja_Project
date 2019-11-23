@@ -1,0 +1,30 @@
+<style>
+  .bd-placeholder-img {
+    font-size: 1.125rem;
+    text-anchor: middle;
+  }
+  @media (min-width: 768px) {
+    .bd-placeholder-img-lg {
+      font-size: 3.5rem;
+    }
+  }
+</style>
+
+<div class="p-4 col-md-6 mx-auto formulario">
+    <div class="text-center mb-4">
+      <h1 class="titulo">Piel En Bandeja</h1>
+      <p class="mt-4 subtitulo">{{subtitulo}}</p>
+    </div>
+    {{#if noCarrito}}
+        <p>No tienes compras todavía</p>
+    {{/if}}
+    {{#each listado}}
+        <div class="d-flex justify-content-around border">
+            <img src="https://res.cloudinary.com/dm4dzbfxs/image/upload/{{fotos.img_url}}" alt="" class="img-fluid col-md-2">
+            <p>{{band_name}}</p>
+            <p>{{band_medidas}}</p>
+            <span>{{format band_price}}</span>
+        </div>
+    {{/each}}
+    <a href="/seguir" class="btn btn-lg btn-success text-white mt-4">Seguir Comprando</a>
+</div>
