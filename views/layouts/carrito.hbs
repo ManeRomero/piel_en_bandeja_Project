@@ -16,15 +16,29 @@
       <p class="mt-4 subtitulo">{{subtitulo}}</p>
     </div>
     {{#if noCarrito}}
-        <p>No tienes compras todavía</p>
+        <p>No has seleccionado compras todavía</p>
     {{/if}}
     {{#each listado}}
-        <div class="d-flex justify-content-around border">
+        <div class="d-flex justify-content-around align-items-center p-2 border-bottom">
             <img src="https://res.cloudinary.com/dm4dzbfxs/image/upload/{{fotos.img_url}}" alt="" class="img-fluid col-md-2">
-            <p>{{band_name}}</p>
-            <p>{{band_medidas}}</p>
-            <span>{{format band_price}}</span>
+            <p class="tituloCarrito">{{band_name}}</p>
+            <small>{{medidas band_medidas}}</small>
+            <p>{{format band_price}}</p>
+            <a href="/carritoBorrar/{{_id}}" class="border text-danger">
+                <i class="material-icons col-md-4">close</i>
+            </a>
         </div>
     {{/each}}
-    <a href="/seguir" class="btn btn-lg btn-success text-white mt-4">Seguir Comprando</a>
+    <div class="row totalPrice">
+        <p>Total: </p>
+        <b>{{format totalPrice}}</b>
+    </div>
+    <div class="row justify-content-around">
+        <a href="/masBandejas" class="btn btn-lg btn-info text-white mt-4"
+        title="Seguir viendo más productos.">Más Productos</a>
+        <a href="/finalizarCompra" class="btn btn-lg btn-success text-white mt-4"
+        title="Proceder a la Compra de los productos seleccionados.">Continuar</a>
+    </div>
 </div>
+
+

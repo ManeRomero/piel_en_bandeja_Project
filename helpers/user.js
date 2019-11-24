@@ -63,12 +63,9 @@ let sendMail = async (dataEmail) => {
 
         email.transporter.use('compile', hbs(mailHelper.transporter))
         email.transporter.sendMail(message, (err, info) => {
-            console.log('AQUÍ ENTRA')
-
             if (err) {
                 console.log(err, 'CLG ERRORR')
             } else {
-                console.log(info, 'AQUÍ EL MENSAJE ', message)
                 email.transporter.close()
             }
         })

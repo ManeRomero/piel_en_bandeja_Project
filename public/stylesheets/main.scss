@@ -1,4 +1,4 @@
-$colorOscuro: #ca7835;
+$colorOscuro: #2e1a0a;
 $colorVivo: #E0BE36;
 $colorNaranja: rgba(119, 95, 17, 0.11);
 $colorClaro: rgb(79, 128, 63);
@@ -14,6 +14,7 @@ html {
     margin: 0;
     padding: 0;
     font-family: 'Lato', sans-serif;
+    transition: all .7s;
 }
 
 body {
@@ -37,7 +38,7 @@ header {
     transition: .8s;
 
     &:hover {
-        background-color: gold;
+        background-color: rgb(180, 219, 240);
     }
 
     .headerContain{
@@ -155,10 +156,9 @@ header {
     }
 
     .band:hover .price {
-        box-shadow: $sombra;
         transform: rotateZ(0deg);
         color: $colorOscuro;
-        transform: scale(1.2);
+        transform: scale(.8);
         border: 1px solid grey;
         background-color: white;
         transition: .5s ease-in-out;
@@ -198,15 +198,22 @@ header {
         font-size: 18px;
     }
 
+    .noBorde {
+        border: 0;
+    }
+
     .interesar {
         margin: 50px auto;
+        padding: 20px;
         text-transform: uppercase;
         letter-spacing: 5px;
     }
 
     .tituloMini {
-        top: 0;
-        left: 10px;
+        width: 80%;
+        text-align: center;
+        top: -20px;
+        z-index: 1000;
     }
 
     .descrip {
@@ -247,7 +254,7 @@ header {
         margin: auto;
         overflow: hidden;
         overflow-x: auto;
-        max-height: 200px;
+        height: 200px;
         position: relative;
 
         div {
@@ -271,7 +278,7 @@ header {
 
 .price {
     position: absolute;
-    bottom: 40px;
+    top: 10px;
     right: 25px;
     padding: 5px;
     font-size: 1.6em;
@@ -302,11 +309,18 @@ header {
     text-align: center;
     margin: auto;
     box-shadow: $sombra;
+    transform: scale(.6);
 }
 
 .titulo {
     font-size: 5vw;
     letter-spacing: 5px;
+}
+
+.tituloCarrito {
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    text-align: center;
 }
 
 .subtitulo {
@@ -335,6 +349,14 @@ footer {
     z-index: 2000;
 }
 
+.totalPrice {
+    justify-content: flex-end;
+    margin-right: 15%;
+    padding: 3vh;
+    font-size: 1.2em;
+    border-bottom: 1px solid rgba(128, 128, 128, 0.541);
+}
+
 /* BARRA DE SCROLL */
 ::-webkit-scrollbar {
   margin: 10px;
@@ -351,10 +373,10 @@ footer {
   border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: grey;
+  background: white;
 }
 ::-webkit-scrollbar-thumb:active {
-  background: #e4b550;
+  background: #c3c2be;
 }
 ::-webkit-scrollbar-track {
   background: grey;
@@ -365,7 +387,7 @@ footer {
   background: #9b6631;
 }
 ::-webkit-scrollbar-track:active {
-  background: #17580e;
+  background: #94a192;
 }
 ::-webkit-scrollbar-corner {
   background: transparent;

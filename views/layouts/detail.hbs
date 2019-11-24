@@ -19,7 +19,7 @@
     <div class="comprar">
         <small class="col-md-2 m-4">{{medidas band_medidas}}</small>
         {{#if ../buttonEnabled}}
-            <a href="/add/{{_id}}" id="comprar" class="m-4 text-white btn btn-lg btn-success" title="Añade a la bandeja {{band_name}} a tu Carrito de la compra">
+            <a href="/add/{{_id}}" id="comprar" class="m-4 text-white btn btn-lg btn-success" title="Añade la bandeja {{band_name}} a tu Carrito de la compra">
                 <span>{{format band_price}}
                     <i class="material-icons col-md-4">shopping_cart</i>
                 </span>
@@ -36,13 +36,14 @@
     <h3 class="interesar">También te puede interesar...</h3>
     <div class="panel">
         {{#each ../listaBandejas}}
-        <div class="col-sml-12 col-md-3 mx-auto"
+        <div class="col-sml-12 col-md-3 mx-auto text-center"
             title="{{band_name}} &#x000D;&#x000A;{{format band_price}}. &#x000D;&#x000A;{{medidas band_medidas}}">
-            <p class="titulo tituloMini">{{band_name}}</p>
+            <p class="titulo noBorde tituloMini">{{band_name}}</p>
             <a href="/bandeja/{{_id}}">
                 <img src="https://res.cloudinary.com/dm4dzbfxs/image/upload/{{imagen.img_url}}" alt=""
                     class="swiper-slide">
             </a>
+            <small class="priceDetail">{{format band_price}}</small>
         </div>
         {{/each}}
     </div>

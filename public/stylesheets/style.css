@@ -7,6 +7,7 @@ html {
   margin: 0;
   padding: 0;
   font-family: "Lato", sans-serif;
+  transition: all 0.7s;
 }
 
 body {
@@ -30,7 +31,7 @@ header {
   transition: 0.8s;
 }
 header:hover {
-  background-color: gold;
+  background-color: #b4dbf0;
 }
 header .headerContain {
   display: flex !important;
@@ -63,7 +64,7 @@ header .headerContain p {
 }
 header .headerContain .reg {
   padding: 7px;
-  color: #ca7835 !important;
+  color: #2e1a0a !important;
   border-radius: 10px;
   font-weight: 900;
   transition: 0.5s all ease-in-out;
@@ -133,10 +134,9 @@ header .headerContain small {
   transform: translateY(-15px);
 }
 .containerBandejas .band:hover .price {
-  box-shadow: 7px 7px 5px 0px rgba(0, 0, 0, 0.102);
   transform: rotateZ(0deg);
-  color: #ca7835;
-  transform: scale(1.2);
+  color: #2e1a0a;
+  transform: scale(0.8);
   border: 1px solid grey;
   background-color: white;
   transition: 0.5s ease-in-out;
@@ -171,14 +171,20 @@ header .headerContain small {
   text-align: center;
   font-size: 18px;
 }
+.detail .noBorde {
+  border: 0;
+}
 .detail .interesar {
   margin: 50px auto;
+  padding: 20px;
   text-transform: uppercase;
   letter-spacing: 5px;
 }
 .detail .tituloMini {
-  top: 0;
-  left: 10px;
+  width: 80%;
+  text-align: center;
+  top: -20px;
+  z-index: 1000;
 }
 .detail .descrip {
   position: absolute;
@@ -214,7 +220,7 @@ header .headerContain small {
   margin: auto;
   overflow: hidden;
   overflow-x: auto;
-  max-height: 200px;
+  height: 200px;
   position: relative;
 }
 .detail .panel div {
@@ -234,7 +240,7 @@ header .headerContain small {
 
 .price {
   position: absolute;
-  bottom: 40px;
+  top: 10px;
   right: 25px;
   padding: 5px;
   font-size: 1.6em;
@@ -253,7 +259,7 @@ header .headerContain small {
   right: 200px;
   font-size: 2vw;
   font-weight: 900;
-  background-color: #ca7835;
+  background-color: #2e1a0a;
   color: black;
   border-radius: 5px;
   z-index: 500;
@@ -265,11 +271,18 @@ header .headerContain small {
   text-align: center;
   margin: auto;
   box-shadow: 7px 7px 5px 0px rgba(0, 0, 0, 0.102);
+  transform: scale(0.6);
 }
 
 .titulo {
   font-size: 5vw;
   letter-spacing: 5px;
+}
+
+.tituloCarrito {
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  text-align: center;
 }
 
 .subtitulo {
@@ -297,6 +310,14 @@ footer {
   z-index: 2000;
 }
 
+.totalPrice {
+  justify-content: flex-end;
+  margin-right: 15%;
+  padding: 3vh;
+  font-size: 1.2em;
+  border-bottom: 1px solid rgba(128, 128, 128, 0.541);
+}
+
 /* BARRA DE SCROLL */
 ::-webkit-scrollbar {
   margin: 10px;
@@ -316,11 +337,11 @@ footer {
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: grey;
+  background: white;
 }
 
 ::-webkit-scrollbar-thumb:active {
-  background: #e4b550;
+  background: #c3c2be;
 }
 
 ::-webkit-scrollbar-track {
@@ -334,7 +355,7 @@ footer {
 }
 
 ::-webkit-scrollbar-track:active {
-  background: #17580e;
+  background: #94a192;
 }
 
 ::-webkit-scrollbar-corner {

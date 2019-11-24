@@ -86,7 +86,6 @@ async function activation(req, res) {
         Has verificado tu cuenta. Te damos la bienvenida!`)
         res.redirect('/index')
         let usuario = await User.findById(hashFound._id)
-        console.log(usuario, 'CONSOLE LOG DE USUARIO')
     }
 }
 
@@ -119,8 +118,6 @@ let startSession = (req, res, data) => {
     req.session.userId = data.user_id
     /* req.session.admin = data.admin */
     req.session.user = data;
-
-    console.log('SESIÓN COMENZADA[futuroWINSTON]: ', req.session.name)
     req.flash('success_msg', `Hola ${req.session.name}, qué quieres hacer hoy?`)
     res.redirect('/index')
 }

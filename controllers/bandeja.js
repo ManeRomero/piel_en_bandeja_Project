@@ -13,13 +13,15 @@ router.get('/create', createView)
 router.post('/create', multerConfig.array('bandejaPics', 100), createBandeja)
 router.get('/add/:id', addCarrito)
 router.get('/carrito', carritoView)
-router.get('/seguir', randomBandeja)
+router.get('/masBandejas', randomBandeja)
+router.get('/carritoBorrar/:idBandeja', borrarCarrito)
 
 async function detailBandeja (req, res) {
     const id = req.params.idBandeja
     const bandeja = await Bandeja.findById(id)
     const imagenes = await Imagen.find({ bandeja_id: id })
-    const listaBandejas = await Bandeja.find()
+    const listaProvisional = await Bandeja.find()
+    let listaBandejas = listaProvisional.filter(item => item._id != id)
     var buttonEnabled = true
 
     for (let i = 0; i < listaBandejas.length; i++) {
@@ -76,6 +78,7 @@ async function createBandeja (req, res, next) {
         res.redirect('/create')
     }
 }
+
 async function addCarrito (req, res) {
     let id = req.params.id
     if (req.session.user === undefined) {
@@ -91,10 +94,12 @@ async function addCarrito (req, res) {
             res.redirect('/bandeja/' + id)
     }
 }
+
 async function carritoView (req, res) {
     let noCarrito = true
     let carritoIds = []
     let listado = []
+    let totalPrice = 0
 
     if (req.session.carrito !== undefined) {
         noCarrito = false
@@ -104,6 +109,7 @@ async function carritoView (req, res) {
     for (let i = 0; i < carritoIds.length; i++) {
         let bandeja = await Bandeja.findById({_id: carritoIds[i]})
         listado.push(bandeja)
+        totalPrice += bandeja.band_price
     }
 
     for (let i = 0; i < listado.length; i++) {
@@ -114,13 +120,28 @@ async function carritoView (req, res) {
     res.render('layouts/carrito', {
         subtitulo: 'Mis Compras',
         noCarrito,
-        listado
+        listado,
+        totalPrice
     })
 }
+
 async function randomBandeja (req, res) {
     let bandejas = await Bandeja.find()
     let bandeja = bandejas[Math.floor(Math.random() * bandejas.length)]._id
     res.redirect('/bandeja/' + bandeja)
+}
+
+async function borrarCarrito (req, res) {
+    let id = req.params.idBandeja
+    let carrito = req.session.carrito
+
+    if (typeof carrito === 'object') {
+        let newCarrito = carrito.filter(item => item != id)
+        req.session.carrito = newCarrito
+    }
+
+    req.flash('success_msg', 'Ya no tienes esta Bandeja en tu Carrito')
+    res.redirect('/carrito')
 }
 
 module.exports = router

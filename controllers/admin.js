@@ -49,8 +49,7 @@ async function bandejaUpdate(req, res) {
         band_descr,
         band_medidas
     } = req.body
-
-    console.log(req.body._id)
+    
     let update = await Bandeja.findByIdAndUpdate({ _id: req.body._id }, {
         band_name,
         band_price,
